@@ -65,6 +65,7 @@ get '/products/:product_id' => sub {
 	my $self = shift;
 	my $product_id = $self->param('product_id') || '';
 
+    $self->session(last_product => $product_id);
 
 	$self->products->_build_product_raw_data();
 
@@ -127,7 +128,7 @@ get '/warenkorb/add/:product' => sub {
 	$self->app->log->debug(Dumper($self->session()));
 
 	$self->flash(message => 'Produkt erfolgreich hinzugefügt');
-	$self->redirect_to('/');
+	$self->redirect_to('/products/' . $self->session('last_product'));
 };
 
 get '/warenkorb/del/:position' => sub {
