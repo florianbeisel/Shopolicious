@@ -125,8 +125,6 @@ get '/warenkorb/add/:product' => sub {
 
 	$self->session(cart => [@oldproducts]);
 
-	$self->app->log->debug(Dumper($self->session()));
-
 	$self->flash(message => 'Produkt erfolgreich hinzugefügt');
 	$self->redirect_to('/products/' . $self->session('last_product'));
 };
