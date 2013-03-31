@@ -132,6 +132,10 @@ get '/warenkorb/add/:product' => sub {
 
 get '/warenkorb/del/:position' => sub {
 	my $self = shift;
+
+    splice @{$self->session('cart')}, $self->param('position'), 1;
+
+    $self->redirect_to('/warenkorb');
 };
 
 any '/logout' => sub {
@@ -371,13 +375,17 @@ Angemeldet als: <%= session 'authenticated_as' %>
 <h2>Warenkorb</h2>
 <table width="100%">
 % my @cart = @{$cart};
+% my $counter = 0;
 % for my $item (@cart) {
 	<tr>
 		<td width="95%">
 			<%= $item %>
 		</td>
-		<td><img src="/images/cart_delete.png" /></td>
+		<td>
+            <a href="/warenkorb/del/<%= $counter %>"><img src="/images/cart_delete.png" /></a>
+        </td>
 	</tr>
+% $counter++;
 % }
 </table>
 
