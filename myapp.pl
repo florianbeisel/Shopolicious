@@ -243,7 +243,7 @@ für Zwischendurch.</p>
 
 
 @@ categories.html.ep
-<h2>Kategorien</h2>
+<h2 style="border-bottom: 1px silver dotted;">Kategorien</h2>
 <ul class="linkedList">
     <li class="first">
     	%= link_to Gummibärchen => '/categories/Gummibärchen'
@@ -266,7 +266,7 @@ für Zwischendurch.</p>
 @@ product_list.html.ep
 % layout 'default';
 % title 'Produktübersicht';
-<h2>Produktübersicht</h2>
+<h2 style="border-bottom: 1px silver dotted;">Produktübersicht</h2>
 % for my $product ( @$productnames ) {
 	<div style="float: left; padding: 15px">
 		<a href="/products/<%= $product %>">
@@ -329,7 +329,7 @@ für Zwischendurch.</p>
 @@ account.html.ep
 % layout 'default';
 % title 'Ihr Konto';
-<h2>Ihr Konto</h2>
+<h2 style="border-bottom: 1px silver dotted;">Ihr Konto</h2>
 Angemeldet als: <%= session 'authenticated_as' %>
 <br />
 %= link_to Logout => '/logout'
@@ -351,14 +351,14 @@ Angemeldet als: <%= session 'authenticated_as' %>
 @@ categoryList.html.ep
 % layout 'default';
 % title 'Kategorien';
-<h2>Kategorien</h2>
+<h2 style="border-bottom: 1px silver dotted;">Kategorien</h2>
 
 
 
 @@ category.html.ep
 % layout 'default';
 % title 'Kategorie';
-<h2>Kategorie: <%= $self->param('category'); %></h2>
+<h2 style="border-bottom: 1px silver dotted;">Kategorie: <%= $self->param('category'); %></h2>
 % foreach my $product (@{$productlist}) {
 	<div style="float: left; padding: 15px">
 		<a href="/products/<%= $product %>">
@@ -371,7 +371,7 @@ Angemeldet als: <%= session 'authenticated_as' %>
 @@ cart.html.ep
 % layout 'default';
 % title 'Warenkorb';
-<h2>Warenkorb</h2>
+<h2 style="border-bottom: 1px silver dotted;">Warenkorb</h2>
 <table width="100%">
 % my @cart = @{$cart};
 % my $counter = 0;
